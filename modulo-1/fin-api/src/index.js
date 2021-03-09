@@ -7,14 +7,6 @@ const port = 2828
 
 app.use(express.json())
 
-/*
- * cpf - string
- * name - string
- * id - uuid
- * statemnet []
- *
- */
-
 const customers = [];
 
 app.post('/account', (request, response) => {
@@ -36,6 +28,16 @@ app.post('/account', (request, response) => {
    return response.status(201).send()
 
 
+});
+
+app.get('/statement/:cpf', (request, response) => {
+   const { cpf } = request.params
+
+   console.log(customers)
+   const customer = customers.find( (customer) => customer.cpf === cpf )
+   console.log(customer)
+
+   return response.json(customer.statement)
 });
 
 app.listen(port, () => console.log(`Server is running http://localhost:${port}`));
