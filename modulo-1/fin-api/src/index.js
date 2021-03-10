@@ -47,7 +47,7 @@ app.post('/account', (request, response) => {
    customers.push({
       cpf,
       name,
-      id: uuidv4,
+      id: uuidv4(),
       statement: []
    })
 
@@ -117,6 +117,36 @@ app.get('/statement/date', verifyCPF, (request, response) => {
    return response.json(statement);
 });
 
+app.put('/account', verifyCPF, (request, response) => {
+   const { name } = request.body;
+   const { customer } = request;
+
+   customer.name = name;
+
+   return response.status(201).send();
+})
+
+app.get('/account', verifyCPF, (request, response) => {
+   const { customer } = request;
+
+   return response.json(customer)
+})
+
+app.delete('/account', verifyCPF, (request, response) => {
+   const { customer } = request
+
+   customers.splice(customer, 1)
+
+   return response.status(200).json(customers)
+})
+
+app.get('/balance', verifyCPF, (request, response) => {
+   const { customer } = request
+
+   const balance = getBalance(customer.statement)
+
+   return response.json(balance)
+})
 
 app.listen(port, () => console.log(`Server is running http://localhost:${port}`));
 
