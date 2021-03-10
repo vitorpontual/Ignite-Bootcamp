@@ -65,5 +65,35 @@ module.exports = {
       }catch(err){
 	 console.error(err)
       }
+   },
+   partial(request, response){
+      try{
+	 const { user } = request
+	 const { id } = request.params
+
+	 const todo = user.todos.find(todo => todo.id == id)
+
+	 todo.done = true
+
+	 return response.status(201).send()
+
+      }catch(err){
+	 console.error(err)
+      }
+   },
+   delete(request, response){
+      try{
+	 const { user } = request
+	 const { id } = request.params
+
+	 const todo = user.todos.find( todo => todo.id === id )
+
+	 user.todos.splice(todo, 1)
+
+	 return response.json(user)
+
+      }catch(err){
+	 console.error(err)
+      }
    }
 }
