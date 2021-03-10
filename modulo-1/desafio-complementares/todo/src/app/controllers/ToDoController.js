@@ -33,5 +33,37 @@ module.exports = {
       }catch(err){
 	 console.error(err)
       }
+   },
+   show(request, response){
+      try{
+	 const { user } = request
+	 const { title, deadline } = request.body
+	 const { id } = request.params
+
+	 const todo = user.todos.filter( todo => todo.id === id )
+
+	 return response.json(todo)
+
+
+      }catch(err){
+	 console.error(err)
+      }
+   },
+   update(request, response){
+      try{
+	 const { title, deadline } = request.body
+	 const { user } = request
+	 const { id } = request.params
+
+	 const todo = user.todos.find(todo => todo.id === id)
+
+	 todo.title = title
+	 todo.deadline = deadline
+
+	 return response.status(201).send()
+
+      }catch(err){
+	 console.error(err)
+      }
    }
 }
