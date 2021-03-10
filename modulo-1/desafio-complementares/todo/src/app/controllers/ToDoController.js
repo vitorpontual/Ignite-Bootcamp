@@ -26,7 +26,7 @@ module.exports = {
 
 	 user.todos.push(todoList);
 
-	 return response.status(201).send()
+	 return response.status(201).json(user.todos[user.todos.length - 1])
 
 
 	 
@@ -57,10 +57,14 @@ module.exports = {
 
 	 const todo = user.todos.find(todo => todo.id === id)
 
+	 if(!todo){
+	    return response.status(404).json({ error: 'Todo not found' })
+	 }
+
 	 todo.title = title
 	 todo.deadline = deadline
 
-	 return response.status(201).send()
+	 return response.status(201).json(todo)
 
       }catch(err){
 	 console.error(err)
@@ -73,9 +77,13 @@ module.exports = {
 
 	 const todo = user.todos.find(todo => todo.id == id)
 
+	 if(!todo){
+	    return response.status(404).json({ error: "Todo not found" })
+	 }
+
 	 todo.done = true
 
-	 return response.status(201).send()
+	 return response.status(201).json(todo)
 
       }catch(err){
 	 console.error(err)
@@ -88,9 +96,13 @@ module.exports = {
 
 	 const todo = user.todos.find( todo => todo.id === id )
 
+	 if(!todo){
+	    return response.status(404).json({ error: 'Todo not found' })
+	 }
+
 	 user.todos.splice(todo, 1)
 
-	 return response.json(user)
+	 return response.status(204).json(user)
 
       }catch(err){
 	 console.error(err)
