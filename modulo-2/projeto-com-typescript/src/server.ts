@@ -1,8 +1,9 @@
-import express from "express";
-import { createCourse } from "./routes";
+import express, { response } from "express";
 
 const app = express();
 
-app.get("/",  createCourse);
+app.get("/", (req, res) => {
+  return res.json({message: "alo mundo"})
+})
 
-app.listen(3333)
+app.listen(5555, () => console.log("Server is running!"))
