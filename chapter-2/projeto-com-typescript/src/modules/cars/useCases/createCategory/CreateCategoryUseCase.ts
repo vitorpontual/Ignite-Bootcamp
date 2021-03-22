@@ -10,7 +10,7 @@ class CreateCategoryUseCase {
 
   constructor(private categoriesRepository: ICategoriesRepository) { }
 
-  execute({ name, description }: IRequest): void {
+  execute({ name, description }: IRequest): void{
     const categoryAlreadyExistis = this.categoriesRepository.findByName(name);
 
 
@@ -18,10 +18,11 @@ class CreateCategoryUseCase {
       throw new Error("Category already exists")
     }
 
-    this.categoriesRepository.create({
+    category = this.categoriesRepository.create({
       name,
       description
     });
+
 
   }
 }
