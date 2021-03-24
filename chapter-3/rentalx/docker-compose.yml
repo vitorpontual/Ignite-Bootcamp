@@ -1,18 +1,21 @@
-version: "3.7"
+version: "3.9"
 
 services:
   database_ignite:
     image: postgres
-    container_name: database_ignite
+    container_name: db_ignite
     restart: always
     ports:
       - 5432:5432
     environment: 
       - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=ignite
-      - POSTGRES_DB=rentx
+      - POSTGRES_DB=db_rentx
     volumes:
       - pgdata:/data/postgres
+    networks:
+      backend:
+        ipv4_address: 12.0.0.3
 
   app:
     build: .
@@ -21,8 +24,17 @@ services:
       - 3333:3333
     volumes:
       - .:/usr/app
-  
+    networks:
+      -  backend
 
 volumes:
   pgdata:
     driver: local
+
+networks:
+  backend:
+    ipam:
+      driver: default
+      config:
+        - subnet: 12.0.0.0/24
+        
