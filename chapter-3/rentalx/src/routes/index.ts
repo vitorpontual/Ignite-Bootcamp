@@ -7,7 +7,7 @@ import { autheticateRoutes as auth } from "./authenticate.routes"
 
 const routes = Router();
 
-routes.use("/auth", auth)
+routes.use("/users", users)
 routes.use("/categories", categories)
 routes.use("/specification", specifications)
 routes.use(auth)

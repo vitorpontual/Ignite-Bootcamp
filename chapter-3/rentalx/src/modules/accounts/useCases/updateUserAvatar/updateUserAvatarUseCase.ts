@@ -16,10 +16,11 @@ class UpdateUserAvatarUseCase {
 
   async execute({user_id, avatar_file}: IRequest): Promise<void>{
     const user = await this.usersRepositroy.findById(user_id);
-
+    
     user.avatar = avatar_file;
 
-    await this.usersRepositroy.create(user);
+    const test = await this.usersRepositroy.create(user);
+    console.log(test)
   }
 }
 
