@@ -18,7 +18,8 @@ class UsersRepository implements IUsersRepository {
       name, 
       password, 
       email, 
-      driver_license
+      driver_license,
+    
     })
 
     await this.repository.save(user)
