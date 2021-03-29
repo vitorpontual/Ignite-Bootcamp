@@ -1,16 +1,47 @@
+import { AppError } from "../../../../errors/AppError";
+import { CategoriesRepositoryInMemory } from "../../repositories/in-memory/CategoryRepositoryInMemory";
+import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
+
+let createCategoryUseCase: CreateCategoryUseCase;
+let categoriesRepositoryInMemory: CategoriesRepositoryInMemory;
 describe("Create Category", () => {
-  it("Espero que 2 + 2 seja 4", () => {
-    const sum = 2 + 2;
-    const result = 4
+  // it("", ()=> {})
+  beforeEach(() => {
+    categoriesRepositoryInMemory = new CategoriesRepositoryInMemory();
+    createCategoryUseCase = new CreateCategoryUseCase(categoriesRepositoryInMemory)
+  })
 
-    expect(sum).toBe(result);
+  it("shoube be able to create a new category", async ()=> {
+
+    const category = {
+      name: "Category Test",
+      description: "Category description Test"
+    }
+    await createCategoryUseCase.execute({
+      ...category
+    });
+
+    const categoryCreated = await categoriesRepositoryInMemory.findByName(category.name)
+
+    expect(categoryCreated).toHaveProperty("id");
   });
 
-  it("Espero que 2 + 2 não seja 5", () => {
-    const sum = 2 + 2;
-    const result = 5;
+  it("shoube not be able to create a new category with name exists", async ()=> {
+    expect(async () => {
+      const category = {
+        name: "Category Test",
+        description: "Category description Test"
+      }
+      await createCategoryUseCase.execute({
+        ...category
+      });
+      await createCategoryUseCase.execute({
+        ...category
+      });
+    }).rejects.toBe(AppError);
 
-    expect(sum).not.toBe(result)
-  })
+
+  });
+
 });
