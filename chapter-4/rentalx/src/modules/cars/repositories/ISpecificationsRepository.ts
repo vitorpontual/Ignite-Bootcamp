@@ -1,9 +1,6 @@
+import { ICreateSpecificationDTO } from "../dtos/ICreateSpecificationDTO";
 import { Specification } from "../infra/typeorm/entities/Specification";
 
-interface ICreateSpecificationDTO {
-  name: string;
-  description: string;
-}
 
 interface ISpecificationsRepository {
 
@@ -12,4 +9,4 @@ interface ISpecificationsRepository {
   findAll(): Promise<Specification[]>;
 }
 
-export { ISpecificationsRepository, ICreateSpecificationDTO }
+export { ISpecificationsRepository }
