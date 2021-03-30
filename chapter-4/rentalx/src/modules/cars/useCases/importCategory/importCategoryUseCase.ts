@@ -2,7 +2,7 @@ import csvParse from "csv-parse";
 import fs from 'fs';
 import { inject, injectable } from "tsyringe";
 
-import { CategoriesRepository } from "@modules/cars/repositories/typeorm/CategoriesRepository";
+import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 
 interface IImportCategory {
   name: string;
@@ -14,7 +14,7 @@ class ImportCategoryUseCase {
 
   constructor(
     @inject("CategoryRepository")
-    private categoryRepository: CategoriesRepository) { };
+    private categoryRepository: ICategoriesRepository) { };
 
 
   loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
