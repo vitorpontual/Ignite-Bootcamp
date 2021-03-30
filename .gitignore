@@ -104,7 +104,7 @@ dist
 .tern-port
 
 # Image
-.png
-.jpg
-.jpeg
+*.png
+*.jpg
+*.jpeg
 
