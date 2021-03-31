@@ -2,23 +2,23 @@
 
 **RF**
 
-Deve ser possível cadastrar um novo carro
+[x]Deve ser possível cadastrar um novo carro
 Deve ser possível listar todas as categorias
 
 **RN**
 
-Não pode cadastrar um carro com uma license_plate já existente.
-O carro deve ser cadastrado, por padrão, com disponibilidade.
-* Não deve ser possível um usuário comum cadastrar o carro, apenas o admin pode cadastrar.
+[x]Não pode cadastrar um carro com uma license_plate já existente.
+[x]O carro deve ser cadastrado, por padrão, com disponibilidade.
+[x]Não deve ser possível um usuário comum cadastrar o carro, apenas o admin pode cadastrar.
 
 # Listagem de carros
 
 **RF**
 
-Deve ser possível listar todos carros disponíveis
-Deve ser possível listar todos os carros disponíveis pelo nome da categoria
-Deve ser possível listar todos os carros disponíveis pela nome da marca
-Deve ser possível listar todos os carros disponíveis pela nome da carro
+[x]Deve ser possível listar todos carros disponíveis
+[x]Deve ser possível listar todos os carros disponíveis pelo nome da categoria
+[x]Deve ser possível listar todos os carros disponíveis pela nome da marca
+[x]Deve ser possível listar todos os carros disponíveis pela nome da carro
 
 
 **RN**
