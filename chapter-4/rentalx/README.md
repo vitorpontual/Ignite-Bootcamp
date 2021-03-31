@@ -23,7 +23,7 @@ Deve ser possível listar todas as categorias
 
 **RN**
 
-O usuário não precisa estar logado no sistema.
+[x]O usuário não precisa estar logado no sistema.
 
 
 # Cadastro de Espicificação no carro
