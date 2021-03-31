@@ -61,7 +61,7 @@ describe("List Cars", () => {
     });
 
     const cars = await listAvailableCarsUseCase.execute({
-      name: "Car1",
+      name: "Car",
 
     });
 
