@@ -9,7 +9,7 @@ Deve ser possível listar todas as categorias
 
 Não pode cadastrar um carro com uma license_plate já existente.
 O carro deve ser cadastrado, por padrão, com disponibilidade.
-Não deve ser possível um usuário comum cadastrar o carro, apenas o admin pode cadastrar.
+* Não deve ser possível um usuário comum cadastrar o carro, apenas o admin pode cadastrar.
 
 # Listagem de carros
 
