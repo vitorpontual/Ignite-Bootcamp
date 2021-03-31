@@ -108,4 +108,4 @@ dist
 *.jpg
 *.jpeg
 
-.gitcommit.sh
+.commit.sh
