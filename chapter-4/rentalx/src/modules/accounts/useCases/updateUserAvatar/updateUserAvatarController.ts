@@ -11,9 +11,6 @@ class UpdateUserAvatarController {
     
     const updateUserAvatarUseCase = container.resolve(UpdateUserAvatarUseCase)
 
-    console.log(id)
-
-
     await updateUserAvatarUseCase.execute({user_id: id, avatar_file})
 
     return response.status(204).send()
