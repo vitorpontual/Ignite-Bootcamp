@@ -35,11 +35,10 @@ class CreateRentalUseCase {
 
     const rentalOpenToUser = await this.rentalsRepository.findOpenRentalByUser(data.user_id);
 
+
     if (rentalOpenToUser) {
       throw new AppError("There's a rental in progress for user!")
     }
-
-    const expectedReturnDateFormat = this.dateProvider.convertToUtc(data.expected_return_date);
 
     const dateNow = this.dateProvider.dateNow();
 

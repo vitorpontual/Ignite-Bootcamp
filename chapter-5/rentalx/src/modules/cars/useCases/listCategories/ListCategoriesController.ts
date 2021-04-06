@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
 import { container } from "tsyringe";
-import { categoriesRoutes } from "../../../../shared/infra/http/routes/categories.routes"
 import { ListCategoriesUseCase } from "./ListCategoriesUseCase"
 
 class ListCategoriesController {

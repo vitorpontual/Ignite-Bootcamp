@@ -38,8 +38,6 @@ class CreateCarSpecificationUseCase {
 
     await this.carsRepostiroy.create(carExists);
 
-    console.log(carExists)
-
     return carExists;
   }
 

@@ -1,8 +1,6 @@
 import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory";
 import { SpecificationRepositoryInMemory } from "@modules/cars/repositories/in-memory/SpecificationRepositoryInMemory";
 import { AppError } from "@shared/errors/AppError";
-import { specificationRoutes } from "@shared/infra/http/routes/specification.routes";
-import { isConstructorDeclaration } from "typescript";
 import { CreateCarSpecificationUseCase } from "./CreateCarSpecificationUseCase"
 
 
