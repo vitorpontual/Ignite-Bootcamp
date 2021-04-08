@@ -6,6 +6,7 @@ import { userRoutes as users } from "./users.routes"
 import { autheticateRoutes as auth } from "./authenticate.routes"
 import { carsRoutes as car} from "./cars.router"
 import { rentalRoutes as rental } from "./rental.routes";
+import { passwordRoutes as password } from "./password.routes"
 
 const routes = Router();
 
@@ -15,5 +16,6 @@ routes.use("/specification", specifications)
 routes.use("/cars", car)
 routes.use("/rentals", rental)
 routes.use(auth)
+routes.use(password)
 
 export  { routes }
