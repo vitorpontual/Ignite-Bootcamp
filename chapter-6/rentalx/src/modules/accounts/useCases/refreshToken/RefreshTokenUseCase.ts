@@ -11,6 +11,11 @@ interface IPayload {
    email: string;
 }
 
+interface ITokenResponse {
+   token: string,
+   refresh_token: string;
+}
+
 @injectable()
 export class RefreshTokenUseCase {
 
@@ -22,7 +27,7 @@ export class RefreshTokenUseCase {
       
    ){}
 
-   async execute(token: string): Promise<string> {
+   async execute(token: string): Promise<ITokenResponse> {
       const { email, sub }= verify(token, auth.secret_refresh_token) as IPayload;
       
       const user_id = sub;
@@ -50,7 +55,15 @@ export class RefreshTokenUseCase {
 	 user_id
       })
 
-      return refresh_token
+      const newToken = sign({}, auth.secret_token, {
+         subject: user_id,
+         expiresIn: auth.expires_in_token
+       });
+
+      return {
+         refresh_token,
+         token: newToken
+      }
 
        
    }
