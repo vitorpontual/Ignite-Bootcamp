@@ -1,8 +1,6 @@
 import { Router } from "express";
 import multer from "multer";
 
-import { Car } from "@modules/cars/infra/typeorm/entities/Cars";
-
 import { ensureAdmin } from "../middlewares/ensureAdmin"
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import uploadConfig from "@config/upload"
@@ -19,7 +17,7 @@ const listAvailableCarsController = new ListAvailableCarsController();
 const createCarSpecificationController = new CreateCarSpecificationController();
 const uploadCarImagesController = new UploadCarImagesController();
 
-const upload = multer(uploadConfig.upload("./tmp/cars"))
+const upload = multer(uploadConfig)
 
 
 carsRoutes.get("/available", listAvailableCarsController.handle)
