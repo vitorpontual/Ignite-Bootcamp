@@ -4,7 +4,7 @@ plugins:
   - serverless-offline
   - serverless-webpack
   - serverless-dynamodb-local
-  
+
 custom:
   webpack:
     webpackConfig: ./webpack.config.js
@@ -22,12 +22,17 @@ custom:
 
 provider: 
   name: aws
+  region: sa-east-1
+  runtime: nodejs14.x
   iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource: "*"
     - Effect: Allow
       Action:
         - s3:*
       Resource: "*"
-
 
 
 functions:
@@ -38,6 +43,12 @@ functions:
           path: /genereteCertificate
           method: POST
           cors: true
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+          - dynamodb:PutItem
+        Resource: "arn:aws:dynamodb:${self.provider.region}:*:table/users_certificates"
   
   verifyCertificate:
     handler: src/functions/verifyCertificate.handle
@@ -46,6 +57,12 @@ functions:
           path: /verifyCertificate/{id}
           method: GET
           cors: true
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+        Resource: "arn:aws:dynamodb:${self.provider.region}:*:table/users_certificates"
+
 
 resources:
   Resources:
