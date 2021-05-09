@@ -1,0 +1,50 @@
+service: ignitecertification
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  dynamodb:
+    stages:
+      - local
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+
+plugins:
+  - serverless-offline
+  - serverless-webpack
+  - serverless-dynamodb-local
+
+provider: 
+  name: aws
+  runtime: nodejs14.x
+  region: sa-east-1
+  
+
+functions:
+  hello:
+    handler: src/functions/genereteCertificate.handle
+    events:
+      - http:
+          path: /genereteCertificate
+          method: POST
+          cors: true
+
+resources:
+  Resources:
+    dbCertificateUser:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: users_certificates
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
