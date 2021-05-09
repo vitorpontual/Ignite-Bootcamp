@@ -25,7 +25,7 @@ provider:
   
 
 functions:
-  hello:
+  genereteCertificate:
     handler: src/functions/genereteCertificate.handle
     events:
       - http:
