@@ -11,7 +11,7 @@ class CarsImagesRepository implements ICarsImagesRepository {
     this.repository = getRepository(CarImage)
     
   }
-    
+  
   async create(car_id: string, image_name: string): Promise<CarImage> {
     
     const carImage = await this.repository.create({
@@ -23,7 +23,14 @@ class CarsImagesRepository implements ICarsImagesRepository {
     
     return carImage
   }
- 
+  
+  async findImageByCarid(car_id: string): Promise<CarImage[]> {
+    return await this.repository.find({car_id})
+  }
+
+  async delete(id: string): Promise<void>{
+    this.repository.delete(id)
+  }
 }
 
 export { CarsImagesRepository }
