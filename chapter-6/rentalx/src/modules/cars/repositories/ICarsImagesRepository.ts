@@ -6,7 +6,7 @@ interface ICarsImagesRepository {
   
   create(car_id: string, image_name: string): Promise<CarImage>;
   findImageByCarid(car_id: string): Promise<CarImage[]>;
-  delete(image_id: string): Promise<void>;
+  delete(image_name: string): Promise<void>;
 }
 
 export { ICarsImagesRepository }
