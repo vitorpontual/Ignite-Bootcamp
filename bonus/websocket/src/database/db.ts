@@ -8,7 +8,8 @@ mongoose.connect(`mongodb+srv://${user}:${key}@cluster0.pfeza.mongodb.net/${dbna
   {
     useCreateIndex: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false,
   },
   () => console.log('DB Connected'))
 mongoose.Promise = global.Promise;
