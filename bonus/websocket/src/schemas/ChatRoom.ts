@@ -4,11 +4,11 @@ import { v4 as uuid } from "uuid"
 
 type ChatRoom = Document & {
   user_id: User[];
-  chat_room_id: String;
+  chat_room_id: string;
 }
 
 const ChatRoomSchema = new Schema({
-  idUsers: [
+  user_id: [
     {
       type: Schema.Types.ObjectId,
       ref: "Users"
@@ -16,7 +16,7 @@ const ChatRoomSchema = new Schema({
   ],
   chat_room_id: {
     type: String,
-    default: uuid(),
+    default: uuid,
   }
 });
 

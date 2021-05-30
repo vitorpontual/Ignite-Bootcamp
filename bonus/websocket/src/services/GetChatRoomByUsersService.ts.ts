@@ -5,10 +5,10 @@ import { ChatRoom } from "../schemas/ChatRoom";
 
 @injectable()
 export class GetChatRoomByUsersService {
-  async execute(idUsers: ObjectId[]){
+  async execute(user_id: ObjectId[]){
     const room = await ChatRoom.findOne({
-      idUsers: {
-        $all: idUsers
+      user_id: {
+        $all: user_id
       }
     }).exec();
 
