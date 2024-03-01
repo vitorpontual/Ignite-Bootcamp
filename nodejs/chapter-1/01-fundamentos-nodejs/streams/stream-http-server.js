@@ -2,17 +2,23 @@ import http from 'node:http'
 import  { Transform } from 'node:stream'
 
 class InverseNumberStream extends Transform {
-  const transformed = Number(chuck.toString()) * -1
+  _transform(chunk, encoding, callback) {
+    const transformed = Number(chunk.toString()) * -1
 
-  callback(null, Buffer.from(String(transformed)))
-  console.log(transformed)
+    console.log(transformed)
+    
+
+    callback(null, Buffer.from(String(transformed)))
+  }
 }
 
 // req = ReadableStream
 // res = WritableStream
-const server =http.createServer((req, res) => {
+const server = http.createServer((req, res) => {
+
   return req
-    .pipe
+    .pipe(new InverseNumberStream())
+    .pipe(res)
 
 })
 
