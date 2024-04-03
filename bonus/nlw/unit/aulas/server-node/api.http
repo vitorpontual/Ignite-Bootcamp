@@ -2,7 +2,25 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-    "title": "Unite Sumit",
+    "title": "Unite Sumit Nlw",
     "details": "Um evento de programação",
     "maximumAttendees": 100
 }
+
+###
+
+POST http://localhost:3333/events/c9873639-74cf-47cd-b696-b8ded7c7d41a/attendees
+Content-Type: application/json
+
+{
+    "name": "Vitor Pontual",
+    "email": "vitorpguedes@me.cow"
+}
+
+###
+
+GET http://localhost:3333/events/c9873639-74cf-47cd-b696-b8ded7c7d41a
+
+### 
+
+Get http://localhost:3333/attendees/5/badge
