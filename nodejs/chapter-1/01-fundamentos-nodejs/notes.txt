@@ -1,0 +1,41 @@
+Buffer
+
+São dados armazenados para serem tradados, após a sua conclusão ele é excluido deixando o processamento mais performatico.
+
+Forma nativa do nodejs para ler e escrever dados da memória
+
+HEXADECIMAL. 0 - F
+
+
+Middleware 
+
+É um interceptador, uma função que vai interceptar uma requisição
+
+// CommonJS => require
+// ESModulejs ==> export
+// Criar usuários
+// Listagem de usuários
+// Edição de usuários
+// Remoção de usuários
+
+// HTTP
+// - Método http
+// - URL
+
+// GET, POST, PUT, PATCH, DELETE
+
+// GET => Buscar recurso back-end
+// POST => Criar uma recurso
+// PUT => Editar/ Atualizar um recurso no back-end
+// PATCH => Atualizar uma informação única ou especifica de um recurso no back-end
+// DELETE => Deletar um recurso do backend
+
+// GET /users => Buscando usuários do back-end
+// POST /users => Criar um usuário no back-end
+
+// Stateful - Stateless (revisar)
+// JSON - JavaScript Object Notation
+
+// HEADERS (Requisição/resposta) ==> Metadados
+
+// HTTP Status Code - MDN
