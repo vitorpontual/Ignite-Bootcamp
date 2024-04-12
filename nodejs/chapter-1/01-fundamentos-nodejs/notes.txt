@@ -39,3 +39,16 @@ Middleware
 // HEADERS (Requisição/resposta) ==> Metadados
 
 // HTTP Status Code - MDN
+
+// Query Parameters: URL Stateful => Filtros, paginação, não-obrigatorios, buscas
+// Route Parameters: Identificação de Recurso
+// Request Body: Envio de informações de um formulário (HTTPs)
+
+// http://localhost:3333/users?userId=1&name=Vitor
+
+// GET http://localhost:3333/users/1
+// DELETE http://localhost:3333/users/1
+
+// POST http://localhost:3333/users
+
+// Edição e Remoção de usuário
