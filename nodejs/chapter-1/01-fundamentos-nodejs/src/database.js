@@ -2,9 +2,11 @@ import fs from 'node:fs/promises'
 
 const databasePath = new URL("../db.json", import.meta.url)
 
+
+
 export class Database {
   #database = {}
-
+  
   constructor() {
     fs.readFile(databasePath, 'utf8').then(data => {
       this.#database = JSON.parse(data)
@@ -34,6 +36,20 @@ export class Database {
     this.#persist();
 
     return data;
+  }
+
+  update(table, id, data) {
+    const rowIndex = this.#database[table].findIndex(row => row.id === id)
+
+    if (rowIndex == -1) {
+      
+    }
+
+    if (rowIndex > -1){
+      this.#database[table][rowIndex] = {id, ...data}
+      this.#persist()
+    }
+    
   }
 
   delete(table, id) {

@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto'
 import { buildRoutePath } from "./utils/build-route-path.js"
 
 
-const database = new Database
+const database = new Database()
 
 export const routes = [
   {
@@ -34,6 +34,20 @@ export const routes = [
 
       return response.writeHead(201).end()
     }
+  },
+  {
+    method: 'PUT',
+    path: buildRoutePath('/users/:id'),
+    handler: (request, response) => {
+      const { id } = request.params
+      const {name, email} = request.body
+
+      database.update('users', id, {
+        name, email
+      })
+      return response.writeHead(204).end()
+    }
+
   },
   {
     method: 'DELETE',
